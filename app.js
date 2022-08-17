@@ -1,4 +1,3 @@
-import process from 'process';
 import rdl from 'readline';
 import fs from 'fs';
 
