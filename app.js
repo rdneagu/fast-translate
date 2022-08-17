@@ -14,14 +14,14 @@ const projectId = 'distributed-inn-359610';
 const location = 'global';
 
 // Translation init
-const translationInput = JSON.parse(fs.readFileSync('./translations/input.json'));
+const translationInput = fs.readFileSync('./translations/input.json');
 const translated = {
-    da: JSON.parse(JSON.stringify(translationInput)),
-    de: JSON.parse(JSON.stringify(translationInput)),
-    no: JSON.parse(JSON.stringify(translationInput)),
-    pl: JSON.parse(JSON.stringify(translationInput)),
-    ro: JSON.parse(JSON.stringify(translationInput)),
-    sv: JSON.parse(JSON.stringify(translationInput)),
+    da: JSON.parse(translationInput.toString()),
+    de: JSON.parse(translationInput.toString()),
+    no: JSON.parse(translationInput.toString()),
+    pl: JSON.parse(translationInput.toString()),
+    ro: JSON.parse(translationInput.toString()),
+    sv: JSON.parse(translationInput.toString()),
 }
 
 const languages = ['da', 'de', 'no', 'pl', 'ro', 'sv'];
@@ -39,13 +39,13 @@ async function start() {
         currentProgress = 0;
         translationBar.reset();
 
-        totalBar.updatePercentage(`Translating to "${lang}"`, index / languages.length);
+        totalBar.updateProgress(`Translating to "${lang}"`, index / languages.length);
         await recursiveTranslate(translated[lang], lang);
         fs.writeFileSync(`translations/${lang}_translated.json`, JSON.stringify(translated[lang], null, 4), 'utf8');
     }
 
-    totalBar.updatePercentage(`Finished translating`, 1);
-    translationBar.updatePercentage(`Finished translating`, 1);
+    totalBar.updateProgress(`Finished translating`, 1);
+    translationBar.updateProgress(`Finished translating`, 1);
 }
 
 function prepare() {
@@ -67,7 +67,7 @@ async function recursiveTranslate(obj, lang) {
     for (let k of Object.keys(obj)) {
         if (typeof obj[k] === 'string') {
             currentProgress++;
-            translationBar.updatePercentage(`Translating "${k}"`, currentProgress / totalPhrases.length);
+            translationBar.updateProgress(`Translating "${k}"`, currentProgress / totalPhrases.length);
             obj[k] = await translateText(obj[k], lang);
         } else {
             await recursiveTranslate(obj[k], lang);
