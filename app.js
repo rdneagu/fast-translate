@@ -14,8 +14,9 @@ const projectId = 'distributed-inn-359610';
 const location = 'global';
 
 // Translation init
-const translationInput = JSON.parse(fs.readFileSync('./translations/en.json'));
+const translationInput = JSON.parse(fs.readFileSync('./translations/input.json'));
 const translated = {
+    da: JSON.parse(JSON.stringify(translationInput)),
     de: JSON.parse(JSON.stringify(translationInput)),
     no: JSON.parse(JSON.stringify(translationInput)),
     pl: JSON.parse(JSON.stringify(translationInput)),
@@ -23,7 +24,7 @@ const translated = {
     sv: JSON.parse(JSON.stringify(translationInput)),
 }
 
-const languages = ['de', 'no', 'pl', 'ro', 'sv'];
+const languages = ['da', 'de', 'no', 'pl', 'ro', 'sv'];
 
 let totalBar;
 let translationBar;
