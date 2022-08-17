@@ -1,0 +1,17 @@
+{
+    "core": {
+        "subscriptions": {
+            "common": {
+                "planDuration": {
+                    "months:singular": "{{duration}} Monat",
+                    "months:plural": "{{duration}} Monate",
+                    "days:singular": "{{duration}} Tag",
+                    "days:plural": "{{duration}} Tage",
+                    "cycle:singular": "{{duration}} Abrechnungszeitraum",
+                    "cycle:plural": "{{duration}} Abrechnungszeiträume",
+                    "forever": "Für immer bis auf Widerruf"
+                }
+            }
+        }
+    }
+}

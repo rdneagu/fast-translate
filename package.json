@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@google-cloud/translate": "^7.0.1"
+  },
+  "name": "fast-translate",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

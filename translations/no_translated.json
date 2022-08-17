@@ -1,0 +1,17 @@
+{
+    "core": {
+        "subscriptions": {
+            "common": {
+                "planDuration": {
+                    "months:singular": "{{duration}} måned",
+                    "months:plural": "{{duration}} måneder",
+                    "days:singular": "{{duration}} dag",
+                    "days:plural": "{{duration}} dager",
+                    "cycle:singular": "{{duration}} faktureringssyklus",
+                    "cycle:plural": "{{duration}} faktureringssykluser",
+                    "forever": "For alltid inntil avlyst"
+                }
+            }
+        }
+    }
+}

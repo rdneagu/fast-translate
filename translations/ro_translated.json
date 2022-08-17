@@ -1,0 +1,17 @@
+{
+    "core": {
+        "subscriptions": {
+            "common": {
+                "planDuration": {
+                    "months:singular": "{{duration}} lună",
+                    "months:plural": "{{duration}} luni",
+                    "days:singular": "{{duration}} zi",
+                    "days:plural": "{{duration}} zile",
+                    "cycle:singular": "{{duration}} ciclu de facturare",
+                    "cycle:plural": "{{duration}} cicluri de facturare",
+                    "forever": "Pentru totdeauna până la anulare"
+                }
+            }
+        }
+    }
+}

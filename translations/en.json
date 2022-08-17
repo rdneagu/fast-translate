@@ -1,0 +1,17 @@
+{
+    "core": {
+        "subscriptions": {
+            "common": {
+                "planDuration": {
+                    "months:singular": "{{duration}} month",
+                    "months:plural": "{{duration}} months",
+                    "days:singular": "{{duration}} day",
+                    "days:plural": "{{duration}} days",
+                    "cycle:singular": "{{duration}} billing cycle",
+                    "cycle:plural": "{{duration}} billing cycles",
+                    "forever": "Forever until cancelled"
+                }
+            }
+        }
+    }
+}
