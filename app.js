@@ -14,14 +14,14 @@ const projectId = 'distributed-inn-359610';
 const location = 'global';
 
 // Translation init
-const translationInput = fs.readFileSync('./translations/input.json');
+const translationInput = fs.readFileSync('./translations/input.json', 'utf8');
 const translated = {
-    da: JSON.parse(translationInput.toString()),
-    de: JSON.parse(translationInput.toString()),
-    no: JSON.parse(translationInput.toString()),
-    pl: JSON.parse(translationInput.toString()),
-    ro: JSON.parse(translationInput.toString()),
-    sv: JSON.parse(translationInput.toString()),
+    da: JSON.parse(translationInput),
+    de: JSON.parse(translationInput),
+    no: JSON.parse(translationInput),
+    pl: JSON.parse(translationInput),
+    ro: JSON.parse(translationInput),
+    sv: JSON.parse(translationInput),
 }
 
 const languages = ['da', 'de', 'no', 'pl', 'ro', 'sv'];
