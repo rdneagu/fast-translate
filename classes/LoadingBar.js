@@ -20,8 +20,18 @@ export class LoadingBar {
         }
     }
 
-    moveCursorToEnd() {
-        rdl.cursorTo(process.stdout, 0, LoadingBar.ID + 4);
+    updateProgress(string, ratio) {
+        this.writeProgressStatus(string);
+        this.writeProgressPercentage(ratio);
+
+        const newProgress = Math.floor(ratio * LoadingBar.SIZE);
+        rdl.cursorTo(process.stdout, this.progress, this.id + 2);
+        for (let i = this.progress; i < newProgress; i++) {
+            process.stdout.write('\u2588')
+        }
+        this.progress = newProgress;
+
+        this.moveCursorToEnd();
     }
 
     writeProgressStatus(string) {
@@ -35,17 +45,7 @@ export class LoadingBar {
         process.stdout.write(`${Math.floor(ratio * 100)}%`);
     }
 
-    updateProgress(string, ratio) {
-        this.writeProgressStatus(string);
-        this.writeProgressPercentage(ratio);
-
-        const newProgress = Math.floor(ratio * LoadingBar.SIZE);
-        rdl.cursorTo(process.stdout, this.progress, this.id + 2);
-        for (let i = this.progress; i < newProgress; i++) {
-            process.stdout.write('\u2588')
-        }
-        this.progress = newProgress;
-
-        this.moveCursorToEnd();
+    moveCursorToEnd() {
+        rdl.cursorTo(process.stdout, 0, LoadingBar.ID + 4);
     }
 }
