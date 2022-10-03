@@ -14,16 +14,10 @@ const location = 'global';
 
 // Translation init
 const translationInput = fs.readFileSync('./translations/input.json', 'utf8');
-const translated = {
-    da: JSON.parse(translationInput),
-    de: JSON.parse(translationInput),
-    no: JSON.parse(translationInput),
-    pl: JSON.parse(translationInput),
-    ro: JSON.parse(translationInput),
-    sv: JSON.parse(translationInput),
-}
+let translated = {};
 
-const languages = ['da', 'de', 'no', 'pl', 'ro', 'sv'];
+const languages = ['da', 'de', 'no', 'pl', 'ro', 'sv']; // Uncomment for admin-web
+// const languages = ['cs', 'da', 'de', 'el', 'es', 'fi', 'fr', 'hu', 'is', 'it', 'nl', 'no', 'pl', 'ro', 'sk', 'sv']; // Uncomment for checkout-web
 
 let totalBar;
 let translationBar;
@@ -37,8 +31,10 @@ async function start() {
     for (let [index, lang] of languages.entries()) {
         currentProgress = 0;
         translationBar.reset();
-
         totalBar.updateProgress(`Translating to "${lang}"`, index / languages.length);
+
+        translated[lang] = JSON.parse(translationInput);
+
         await recursiveTranslate(translated[lang], lang);
         fs.writeFileSync(`translations/${lang}_translated.json`, JSON.stringify(translated[lang], null, 4), 'utf8');
     }
@@ -51,7 +47,7 @@ function prepare() {
     rdl.cursorTo(process.stdout, 0, 0);
     rdl.clearScreenDown(process.stdout);
 
-    JSON.stringify(translated.ro, (key, value) => {
+    JSON.parse(translationInput, (key, value) => {
         if (typeof value === 'string') {
             totalPhrases.push(value);
         }
